@@ -1,0 +1,57 @@
+
+html = r'''<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>На скільки добре ти знаєш свою жінку?</title>
+<style>
+body{font-family:Arial,sans-serif;background:linear-gradient(135deg,#fff0f5,#ffdce8);color:#4a2633;margin:0;padding:25px}
+main{max-width:720px;margin:auto;background:#fff;border-radius:28px;padding:28px;box-shadow:0 10px 30px #0002}
+h1{text-align:center;color:#c23d69}.heart{text-align:center;font-size:32px;color:#d64c79}
+.subtitle{text-align:center;color:#87576a}
+.q{background:#fff6f9;border:1px solid #f1c9d7;border-radius:18px;padding:16px;margin:15px 0}
+label{display:block;background:white;border:1px solid #efd4de;border-radius:11px;padding:10px;margin:7px 0}
+button{width:100%;padding:15px;border:0;border-radius:15px;background:#d64c79;color:white;font-size:18px;font-weight:bold}
+#result{display:none;text-align:center;background:#fff0f5;padding:20px;border-radius:18px;margin-top:18px}
+</style>
+</head>
+<body><main>
+<div class="heart">♡ ♥️ ♡ ♥️ ♡</div>
+<h1>На скільки добре ти знаєш свою жінку?</h1>
+<p class="subtitle">Перевір, наскільки добре ти знаєш Каріну 💗</p>
+<form id="quiz"></form>
+<button type="button" onclick="check()">Перевірити відповіді 💕</button>
+<div id="result"></div>
+</main>
+<script>
+const Q=[
+["Як звати мого щура?",["Боня","Бейліс","Річі","Тоша"],["B"]],
+["Якого кольору в мене очі?",["Блакитні","Коричневі","Зелені","Коричнево-зелені"],["D"]],
+["Яку книгу я зараз читаю?",["«Покинь, якщо кохаєш»","«Якби він був зі мною»","«Грішна»","«Переслідування Аделіни»"],["D"]],
+["Що я найбільше ціную саме в тобі?",["Те, що ти в мене є","Твою любов до мене","Просто ціную тебе","Твоє почуття гумору"],["A","B","C"]],
+["Що може швидко підняти мені настрій?",["Смачна їжа","Улюблена музика","Твоя увага та спілкування зі мною","Просто добре виспатися"],["A","B","C","D"]],
+["Як звали мою черепаху?",["Мія","Меріда","Луна","Кіра"],["B"]],
+["Яку їжу я могла б їсти завжди?",["Макарони","Пельмені","Піцу","Картоплю"],["A"]],
+["Що я більше люблю?",["Море","Гори","Місто","Ліс"],["B"]],
+["Яка моя улюблена пора року?",["Весна","Літо","Осінь","Зима"],["B"]],
+["Який мій улюблений напій?",["Кола","Пепсі","Холодний чай","Проста вода"],["B","C"]],
+["Що мене найбільше дратує?",["Коли ти мене перекривляєш","Коли жартуєш наді мною","Ти мене ніколи не дратуєш","Коли ти довго не відповідаєш"],["A"]],
+["Що я найчастіше кажу?",["Я тебе люблю","Ну ти лохушка","Я хочу їсти","Мені нудно"],["B"]],
+["Що для мене найважливіше у стосунках?",["Довіра","Постійно бути разом","Подарунки","Спільні розваги"],["A"]],
+["Що я найбільше ціную в наших стосунках?",["Спокій","Чесність","Підтримку","Подарунки"],["A","B","C"]],
+["Що я найчастіше роблю, коли мені нудно?",["Дивлюся фільми","Сиджу в TikTok","Гуляю","Звоню тобі"],["D"]],
+["Що я можу купити навіть тоді, коли не планувала?",["Воду","Серветки","Сир-косичку","Щось перекусити"],["D"]],
+["Що я ціную у стосунках з людиною?",["Спокій","Чесність","Підтримку","Довіру"],["B","C","D"]],
+["Який вид спорту я найбільше люблю дивитися?",["Футбол","Волейбол","Баскетбол","Теніс"],["A"]],
+["Що я більше люблю?",["Активний відпочинок","Відпочинок вдома","Спокійні прогулянки","Посиденьки з друзями"],["A"]]
+];
+Q.sort(()=>Math.random()-.5);
+const f=document.getElementById("quiz");
+Q.forEach((q,i)=>{let d=document.createElement("div");d.className="q";d.innerHTML="<b>"+(i+1)+". "+q[0]+"</b>"+q[1].map((x,j)=><label><input type="checkbox" name="q${i}" value="${String.fromCharCode(65+j)}"> ${String.fromCharCode(65+j)}) ${x}</label>).join("");f.appendChild(d)});
+[30.09.2026 3:43] Каруха💋: function check(){let s=0;Q.forEach((q,i)=>{let a=[...document.querySelectorAll(input[name=q${i}]:checked)].map(x=>x.value).sort(),b=[...q[2]].sort();if(JSON.stringify(a)==JSON.stringify(b))s++});let p=Math.round(s/Q.length*100),r=document.getElementById("result");r.style.display="block";r.innerHTML=<h2>💕 Результат: ${s} / ${Q.length}</h2><p>${p===100?"Ти знаєш свою жінку просто ідеально! 💗":p>=80?"Ти дуже добре її знаєш! ❤️":p>=60?"Непогано, але є що ще дізнатися 😉":"Треба уважніше слухати свою жінку 😄"}</p>}
+</script>
+</body></html>'''
+p=Path("/mnt/data/na_skilyky_dobre_ty_znaiesh_svoyu_zhinku.html")
+p.write_text(html,encoding="utf-8")
+print(p)
